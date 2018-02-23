@@ -22,8 +22,8 @@ Rails.application.configure do
     :address => "smtp.sendgrid.net",
     :port => 587,
     :domain => 'y',
-    :user_name => "RoyFuji", #ご自身のgmailアドレス
-    :password => "Fuj1ringo", #ご自身のgmailアドレスのパスワード
+    :user_name => "", #ご自身のgmailアドレス
+    :password => "", #ご自身のgmailアドレスのパスワード
     :authentication => :plain
   }
 
