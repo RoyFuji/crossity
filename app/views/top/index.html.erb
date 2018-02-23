@@ -1,10 +1,10 @@
 <% unless current_user.full_profile? %>
   <header class="header_top panel panel-default col-lg-12 no-profile">
-    <h2>まずは、あなたの基本プロフィールを登録しましょう！/
-    First, let's register your basic profile！</h2>
+    <h2>まずは、あなたの基本プロフィールを登録しよう！/
+    Let's register your basic profile！</h2>
 
-    <p>Crossityは友達の質問に答えながらプロフィールを作るサービスです！</p>
-    <p>Profyは！</p>
+    <p>Crossityは外国人と気軽に友達になれるサービスです！</p>
+
     <%= link_to "プロフィールを登録する/ Register Profile", edit_user_path(current_user), { class: "btn btn-lg btn-primary withripple" } %>
   </header>
 <% else %>
