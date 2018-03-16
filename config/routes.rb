@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+  omniauth_callbacks: "omniauth_callbacks"
+  }
   root "top#index"
   get "/answers/:id", to: "answers#new"
   patch "/questions/:id", to: "questions#update"

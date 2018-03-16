@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :omniauthable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,authentication_keys: [:email, :group_key]
 
   attr_accessor :group_key
@@ -10,9 +10,14 @@ class User < ActiveRecord::Base
   has_many :questions, ->{order("created_at DESC")}, through: :participants
   has_many :answers, ->{ order("updated_at DESC") }
   has_many :answered_questions, through: :answers, source: :question
+  has_many :social_profiles, dependent: :destroy
 
     #validation
   before_validation :group_key_to_id, if: :has_group_key?
+
+  def social_profile(provider)
+    social_profiles.select{ |sp| sp.provider == provider.to_s }.first
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
       conditions = warden_conditions.dup
