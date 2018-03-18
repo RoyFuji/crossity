@@ -1,5 +1,7 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-   def line; ; end
+   def line
+    redirect_to :root and return
+   end
   private
 
   def basic_action
